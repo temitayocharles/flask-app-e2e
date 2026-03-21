@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
-    - "helm/flask-app/values.yaml"
+    - "flask-app/values.yaml"
 
 concurrency:
   group: docker-build-${{ github.ref }}
@@ -70,17 +70,17 @@ jobs:
         import os
         import re
 
-        values_file = Path("helm/flask-app/values.yaml")
+        values_file = Path("flask-app/values.yaml")
         sha_tag = os.environ["SHA_TAG"]
         data = values_file.read_text()
 
-        pattern = r'(^\s*tag:\s*")[^"]*(".*$)'
+        pattern = r'(^[ \t]*tag:[ \t]*")[^"]*(".*$)'
         replacement = rf'\g<1>{sha_tag}\g<2>'
 
         new_data, count = re.subn(pattern, replacement, data, flags=re.MULTILINE)
 
         if count == 0:
-            raise SystemExit("Could not find image.tag in helm/flask-app/values.yaml")
+            raise SystemExit("Could not find image.tag in flask-app/values.yaml")
 
         values_file.write_text(new_data)
         print(f"Updated image.tag to {sha_tag}")
@@ -93,7 +93,7 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        git add helm/flask-app/values.yaml
+        git add flask-app/values.yaml
 
         if git diff --cached --quiet; then
           echo "No changes to commit"
