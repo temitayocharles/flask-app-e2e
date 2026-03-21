@@ -12,7 +12,7 @@ image:
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
 <<<<<<< HEAD
-  tag: "latest"
+  tag: "93fa10d"
 =======
   tag: "93fa10d"
 >>>>>>> 089da879bc25d671c67f968a4feb6f1ba4302a84
