@@ -7,4 +7,7 @@ resource "minikube_cluster" "docker" {
   ]
 }
 
-
+module "argocd" {
+  source  = "squareops/argocd/kubernetes"
+  version = "3.0.1"
+}
