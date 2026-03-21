@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/temitayocharles/flask-app-e2e.git
     targetRevision: main
-    path: /Users/charlie/Movies/terraform-mini/flask-app/Chart.yaml
+    path: flask-app/Chart.yaml
 
     helm:
       valueFiles:
