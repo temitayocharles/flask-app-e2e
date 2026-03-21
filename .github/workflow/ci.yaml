@@ -1,0 +1,7 @@
+name: CI to build and push flask app
+on:
+  push:
+    branches: [ main ]
+runs-on: ubuntu-latest
+steps:
+- name: Check out the repository
